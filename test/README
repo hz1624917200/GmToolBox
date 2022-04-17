@@ -9,3 +9,11 @@ in the development cycle.
 
 More information about PlatformIO Unit Testing:
 - https://docs.platformio.org/page/plus/unit-testing.html
+
+## Firmware Test
+[Official Firmware Download](https://dl.sipeed.com/shareURL/MAIX/MaixPy/release/master/maixpy_v0.6.2_75_g973361c0d), choose minimum with IDE-Support, or others as you wish.
+
+Test command is in firmware.sh, don't forget to add the firmware path at the end.
+
+*Possibly need to change the port number, default is COM5*
+
