@@ -1,0 +1,1 @@
+C:\Users\hz162\.platformio\penv\Scripts\python.exe "C:\Users\hz162\.platformio\packages\tool-kflash-kendryte210\kflash.py" -p COM5 -b 115200 -B bit_mic
