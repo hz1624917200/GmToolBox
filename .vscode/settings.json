@@ -6,6 +6,12 @@
 		"cstdio": "c",
 		"fstream": "c",
 		"sstream": "c",
-		"streambuf": "c"
+		"streambuf": "c",
+		"vector": "cpp",
+		"algorithm": "cpp",
+		"utility": "cpp",
+		"tuple": "cpp",
+		"string": "cpp",
+		"memory": "cpp"
 	}
 }
