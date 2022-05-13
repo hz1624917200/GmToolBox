@@ -12,6 +12,11 @@
 		"utility": "cpp",
 		"tuple": "cpp",
 		"string": "cpp",
-		"memory": "cpp"
+		"memory": "cpp",
+		"sm3.h": "c",
+		"string.h": "c",
+		"random": "c",
+		"sleep.h": "c",
+		"features.h": "c"
 	}
 }

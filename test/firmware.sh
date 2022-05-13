@@ -1,1 +1,1 @@
-~\.platformio\penv\Scripts\python.exe "~\.platformio\packages\tool-kflash-kendryte210\kflash.py" -p COM5 -b 115200 -B bit_mic
+~\.platformio\penv\Scripts\python.exe "~\.platformio\packages\tool-kflash-kendryte210\kflash.py" -b 115200 -B bit_mic
