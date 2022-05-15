@@ -17,6 +17,9 @@
 		"string.h": "c",
 		"random": "c",
 		"sleep.h": "c",
-		"features.h": "c"
+		"features.h": "c",
+		"stdint.h": "c",
+		"padding.h": "c",
+		"aes.h": "c"
 	}
 }

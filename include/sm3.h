@@ -51,6 +51,7 @@
 
 #include <string.h>
 #include <stdint.h>
+#include <stdio.h>
 
 #ifdef __cplusplus
 extern "C" {
@@ -64,6 +65,7 @@ extern "C" {
 #define SM3_STATE_WORDS		8
 #define SM3_HMAC_SIZE		(SM3_DIGEST_SIZE)
 
+#define SM3_GROUP_SIZE		1	// for stream digest efficiency optimization
 
 typedef struct {
 	uint32_t digest[SM3_STATE_WORDS];
@@ -77,6 +79,7 @@ void sm3_update(SM3_CTX *ctx, const uint8_t *data, size_t datalen);
 void sm3_finish(SM3_CTX *ctx, uint8_t dgst[SM3_DIGEST_SIZE]);
 void sm3_digest(const uint8_t *data, size_t datalen, uint8_t dgst[SM3_DIGEST_SIZE]);
 
+int sm3_stream(uint32_t msglen, uint8_t dgst[SM3_DIGEST_SIZE], FILE *fin);
 
 typedef struct {
 	SM3_CTX sm3_ctx;
