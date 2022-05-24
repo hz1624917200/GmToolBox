@@ -1,0 +1,1 @@
+/usr/bin/cc   -rdynamic CMakeFiles/sm4test.dir/test/sm4test.c.o  -o bin/sm4test  lib/libgmssl.a -ldl 

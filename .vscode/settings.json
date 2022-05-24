@@ -1,5 +1,6 @@
 {
 	"files.associations": {
+		"*.rpgsave": "json",
 		"stdio.h": "c",
 		"cdefs.h": "c",
 		"*.tcc": "c",
@@ -20,6 +21,9 @@
 		"features.h": "c",
 		"stdint.h": "c",
 		"padding.h": "c",
-		"aes.h": "c"
+		"aes.h": "c",
+		"sm4.h": "c",
+		"sm4_lcl.h": "c",
+		"hex.h": "c"
 	}
 }

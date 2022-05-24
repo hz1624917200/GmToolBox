@@ -1,0 +1,5 @@
+/mnt/d/work/osCOMP/proj166-gmssl-on-freertos/CMakeFiles/rebuild_cache.dir
+/mnt/d/work/osCOMP/proj166-gmssl-on-freertos/CMakeFiles/edit_cache.dir
+/mnt/d/work/osCOMP/proj166-gmssl-on-freertos/CMakeFiles/test.dir
+/mnt/d/work/osCOMP/proj166-gmssl-on-freertos/CMakeFiles/sm4test.dir
+/mnt/d/work/osCOMP/proj166-gmssl-on-freertos/CMakeFiles/gmssl.dir
