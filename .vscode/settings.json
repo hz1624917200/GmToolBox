@@ -24,6 +24,11 @@
 		"aes.h": "c",
 		"sm4.h": "c",
 		"sm4_lcl.h": "c",
-		"hex.h": "c"
+		"hex.h": "c",
+		"error.h": "c",
+		"gf128.h": "c",
+		"gcm.h": "c",
+		"RAND.H": "cpp",
+		"endian.h": "c"
 	}
 }

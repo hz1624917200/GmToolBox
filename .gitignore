@@ -6,3 +6,5 @@
 .vscode/ipch
 firmware
 *.exe
+
+osCOMP.code-workspace

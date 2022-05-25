@@ -51,15 +51,6 @@
 #include <stdlib.h>
 #include "../include/sm4.h"
 #include "../include/error.h"
-#include "../include/rand.h"
-
-# ifdef SM4_AVX2
-void sm4_avx2_ecb_encrypt_blocks(const unsigned char *in,
-	unsigned char *out, size_t blocks, const SM4_KEY *key);
-void sm4_avx2_ctr32_encrypt_blocks(const unsigned char *in,
-	unsigned char *out, size_t blocks, const SM4_KEY *key,
-	const unsigned char iv[16]);
-# endif
 
 static int test_ecb(int avx)
 {
@@ -77,10 +68,6 @@ static int test_ecb(int avx)
 	for (i = 0; i < sizeof(in); i++) {
 		in[i] = (unsigned char)i;
 	}
-	/*
-	RAND_bytes(user_key, sizeof(user_key));
-	RAND_bytes(in, sizeof(in));
-	*/
 
 	sm4_set_encrypt_key(&key, user_key);
 	for (i = 0; i < sizeof(in)/SM4_BLOCK_SIZE; i++) {
@@ -88,11 +75,6 @@ static int test_ecb(int avx)
 	}
 
 	switch (avx) {
-# ifdef SM4_AVX2
-	case 2:
-		sm4_avx2_ecb_encrypt_blocks(in, out2, sizeof(in)/SM4_BLOCK_SIZE, &key);
-		break;
-# endif
 	default:
 		printf("avx shuold be in {2}\n");
 		error_print();
@@ -244,22 +226,6 @@ int test_sm4(void)
 	} else
 		printf("sm4 ctr32 pass!\n");
 
-# ifdef SM4_AVX2
-	/* test ecb in avx2 */
-	if (!test_ecb(2)) {
-		printf("sm4 ecb in avx2 not pass!\n");
-		err++;
-	} else
-		printf("sm4 ecb in avx2 pass!\n");
-
-	/* test ctr32 in avx2 */
-	if (!test_ctr32(2)) {
-		printf("sm4 ctr32 in avx2 not pass!\n");
-		err++;
-	} else
-		printf("sm4 ctr32 in avx2 pass!\n");
-# endif
-
 	if (err == 0)
 		printf("sm4 all test vectors pass!\n");
 	else
@@ -338,6 +304,7 @@ static int test_sm4_cbc_update(void)
 	size_t lens[] = { 1,5,17,80 };
 	int i;
 
+	// !!! To do: no random device, change to const
 	rand_bytes(key, sizeof(key));
 	rand_bytes(iv, sizeof(iv));
 	rand_bytes(mbuf, sizeof(mbuf));
@@ -368,42 +335,6 @@ static int test_sm4_cbc_update(void)
 		return -1;
 	}
 	format_bytes(stderr, 0, 0, "p", pbuf, plen);
-
-	/*
-	for (i = 0; i < sizeof(inlens)/sizeof(inlens[0]); i++) {
-		if (sm4_cbc_encrypt_update(&enc_ctx, in + inlen, inlens[i], out + outlen, &len) != 1) {
-			error_print();
-			return -1;
-		}
-		inlen += inlens[i];
-		outlen += len;
-	}
-	printf("inlen = %zu\n", inlen);
-
-	if (sm4_cbc_encrypt_finish(&enc_ctx, out + outlen, &len) != 1) {
-		error_print();
-		return -1;
-	}
-	outlen += len;
-
-	if (sm4_cbc_decrypt_init(&dec_ctx, key, iv) != 1) {
-		error_print();
-		return -1;
-	}
-	for (i = 0; i < sizeof(lens)/sizeof(lens[0]); i++) {
-		if (sm4_cbc_decrypt_update(&dec_ctx, cbuf + inlen, lens[i], pbuf + outlen, &len) != 1) {
-			error_print();
-			return -1;
-		}
-	}
-
-	if (sm4_cbc_decrypt_finish(&dec_ctx, pbuf + outlen, &len) != 1) {
-		error_print();
-		return -1;
-	}
-	outlen += len;
-	*/
-
 	return 1;
 }
 

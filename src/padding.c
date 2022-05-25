@@ -2,7 +2,7 @@
 #include <stdint.h>
 #include <string.h>
 
-uint32_t pkcs7_padding(uint8_t *msg, uint32_t msglen, uint8_t blocksize)
+inline uint32_t pkcs7_padding(uint8_t *msg, uint32_t msglen, uint8_t blocksize)
 {
 	uint32_t blockCount = msglen / blocksize + 1;
 	if (msglen % blocksize)

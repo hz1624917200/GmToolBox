@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <string.h>
 #include "sm3.h"
-#include "padding.h"
 
 int sm3_stream(uint32_t msglen, uint8_t dgst[SM3_DIGEST_SIZE], FILE *fin)
 {

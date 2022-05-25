@@ -46,14 +46,14 @@
  * OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include <stdio.h>
-#include <string.h>
+// #include <stdio.h>
+// #include <string.h>
 #include <stdlib.h>
 #include "../include/gf128.h"
 #include "../include/gcm.h"
-#include "../include/oid.h"
+// #include "../include/oid.h"
 #include "../include/error.h"
-#include "../include/aes.h"
+// #include "../include/aes.h"
 #include "../include/endian.h"
 
 
@@ -115,32 +115,4 @@ void ghash(const uint8_t h[16], const uint8_t *aad, size_t aadlen, const uint8_t
 	X = gf128_add(X, L);
 	H = gf128_mul(X, H);
 	gf128_to_bytes(H, out);
-}
-
-int gcm_encrypt(const BLOCK_CIPHER_KEY *key, const uint8_t *iv, size_t ivlen,
-	const uint8_t *aad, size_t aadlen, const uint8_t *in, size_t inlen,
-	uint8_t *out, size_t taglen, uint8_t *tag)
-{
-	if (key->cipher == BLOCK_CIPHER_sm4()) {
-		sm4_gcm_encrypt(&(key->u.sm4_key), iv, ivlen, aad, aadlen,  in, inlen, out, taglen, tag);
-		return 1;
-	} else if (key->cipher == BLOCK_CIPHER_aes128()) {
-		aes_gcm_encrypt(&(key->u.aes_key), iv, ivlen, aad, aadlen,  in, inlen, out, taglen, tag);
-		return 1;
-	}
-	error_print();
-	return -1;
-}
-
-int gcm_decrypt(const BLOCK_CIPHER_KEY *key, const uint8_t *iv, size_t ivlen,
-	const uint8_t *aad, size_t aadlen, const uint8_t *in, size_t inlen,
-	const uint8_t *tag, size_t taglen, uint8_t *out)
-{
-	if (key->cipher == BLOCK_CIPHER_sm4()) {
-		sm4_gcm_decrypt(&(key->u.sm4_key), iv, ivlen, aad, aadlen,  in, inlen, tag, taglen, out);
-	} else if (key->cipher == BLOCK_CIPHER_aes128()) {
-		aes_gcm_decrypt(&(key->u.aes_key), iv, ivlen, aad, aadlen,  in, inlen, tag, taglen, out);
-	}
-	error_print();
-	return -1;
 }
