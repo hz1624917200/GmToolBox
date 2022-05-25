@@ -1,1 +1,0 @@
-/usr/bin/cc    CMakeFiles/SM4_test.dir/test/sm4test.c.o  -o SM4_test 

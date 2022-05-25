@@ -1,1 +1,0 @@
-/usr/bin/cc   -rdynamic CMakeFiles/sm3test.dir/test/sm3test.c.o  -o bin/sm3test  lib/libgmssl.a -ldl 
