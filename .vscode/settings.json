@@ -29,6 +29,27 @@
 		"gf128.h": "c",
 		"gcm.h": "c",
 		"RAND.H": "cpp",
-		"endian.h": "c"
+		"endian.h": "c",
+		"dvp_camera.h": "c",
+		"stdlib.h": "c",
+		"jlt32009a.h": "c",
+		"atomic": "cpp",
+		"deque": "cpp",
+		"forward_list": "cpp",
+		"unordered_map": "cpp",
+		"limits": "cpp",
+		"system_error": "cpp",
+		"utils.h": "c",
+		"lcd.h": "c",
+		"st7789.h": "c",
+		"project_cfg.h": "c",
+		"ov5640.h": "c",
+		"istream": "c",
+		"ostream": "c",
+		"fpioa.h": "c",
+		"sysctl.h": "c",
+		"board_config.h": "c",
+		"shared.h": "c",
+		"devices.h": "c"
 	}
 }
