@@ -11,7 +11,7 @@
 #include "sm4.h"
 #include "gmssl_cfg.h"
 
-Semaphore semAvailable, semEmpty;
+SemaphoreHandle_t semAvailable, semEmpty;
 uint8_t *Encrypted_data;
 // Encryption and Verify
 SM4_KEY myKey;
