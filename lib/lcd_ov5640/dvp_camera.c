@@ -36,7 +36,6 @@ handle_t file_dvp;
 uint32_t *lcd_gram0;
 uint32_t *lcd_gram1;
 
-
 void sensor_restart()
 {
     dvp_set_signal(file_dvp, DVP_SIG_POWER_DOWN, 1);

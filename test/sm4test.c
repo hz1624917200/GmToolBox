@@ -311,7 +311,7 @@ static int test_sm4_cbc_update(void)
 
 	format_bytes(stderr, 0, 0, "iv", iv, sizeof(iv));
 
-
+	// change the length for testing
 	mlen = 16;
 	clen = 0;
 	format_bytes(stderr, 0, 0, "m", mbuf, mlen);
@@ -345,6 +345,7 @@ int main(void)
 	test_sm4_cbc();
 	test_sm4_cbc_padding();
 */
+	test_sm4();
 	test_sm4_cbc_update();
 	return 0;
 }

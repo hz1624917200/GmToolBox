@@ -1,0 +1,1 @@
+#define KEY_RAW "This is test key"

@@ -50,6 +50,11 @@
 		"sysctl.h": "c",
 		"board_config.h": "c",
 		"shared.h": "c",
-		"devices.h": "c"
+		"devices.h": "c",
+		"time.h": "c",
+		"numeric": "c",
+		"type_traits": "c",
+		"timer.h": "c",
+		"timers.h": "c"
 	}
 }
