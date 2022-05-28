@@ -36,7 +36,7 @@ void TaskDataEncrypt()
         // putchar('\n');
 
         // do encryption
-        sm4_cbc_padding_encrypt(&myKey, iv, (uint8_t *)lcd_gram0, DVP_LENGTH, Encrypted_data, &encrypt_len);
+        sm4_cbc_padding_encrypt(&myKey, iv, (uint8_t *)lcd_gram0, GRAM_SIZE, Encrypted_data, &encrypt_len);
 
         printf("encrypt_len: %lu\n", encrypt_len);
         // for (int i = 0; i < 32; i++)
@@ -59,7 +59,6 @@ void TaskDataEncrypt()
     vTaskDelete(NULL);
 }
 
-// To do: Create a test data generator
 void TaskGenerator()
 {
     while (1)

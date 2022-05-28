@@ -18,7 +18,7 @@
 
 #define DVP_WIDTH 320
 #define DVP_HIGHT 240
-#define DVP_LENGTH DVP_WIDTH * DVP_HIGHT * 2
+
 // extern volatile uint8_t dvp_finish_flag;
 // extern volatile uint8_t gram_mux;
 

@@ -10,6 +10,6 @@ extern SemaphoreHandle_t semEmpty;
 extern SemaphoreHandle_t semAvailable;
 
 #define GRAM_SIZE 320 * 240 * 2
-#define MAC_SIZE 64
+
 
 #endif
