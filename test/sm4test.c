@@ -304,10 +304,14 @@ static int test_sm4_cbc_update(void)
 	size_t lens[] = { 1,5,17,80 };
 	int i;
 
-	// !!! To do: no random device, change to const
-	rand_bytes(key, sizeof(key));
-	rand_bytes(iv, sizeof(iv));
-	rand_bytes(mbuf, sizeof(mbuf));
+	
+	// rand_bytes(key, sizeof(key));
+	// rand_bytes(iv, sizeof(iv));
+	// rand_bytes(mbuf, sizeof(mbuf));
+	memcpy(key, "This is Test Key", 16);
+	memset(iv, 0x23, 16);
+	memset(mbuf, 0x22, 16 * 5);
+	memset(mbuf + 16 * 5, 0x33, 16 * 5);
 
 	format_bytes(stderr, 0, 0, "iv", iv, sizeof(iv));
 
