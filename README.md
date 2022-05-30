@@ -58,7 +58,7 @@
 
 ### SM4的算法流程
 
-待补充
+详见[SM4分组密码算法](./doc/SM4分组密码算法.md)
 
 ### Platform IO
 详见[Platform IO x FreeRTOS 环境搭建](./doc/Platform%20IO%20x%20FreeRTOS%20%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA.md)
