@@ -1,6 +1,6 @@
 # GmToolBox Library
 
-> &emsp;&emsp;此库为本项目的主要设计成果。在FreeRTOS上实现了包含SM3，SM4算法的国密算法库。内含多种加密、摘要计算模式。具体定义在头文件中。**详细使用说明，请参见[GmToolBox Documentation](../../doc/GmSSL-Documentation.md)**
+> &emsp;&emsp;此库为本项目的主要设计成果。在FreeRTOS上实现了包含SM3，SM4算法的国密算法库。内含多种加密、摘要计算模式。具体定义在头文件中。**详细使用说明，请参见[GmToolBox Documentation](../../doc/GmToolBox-Documentation.md)**
 
 ## 文件结构/说明
 
