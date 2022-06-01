@@ -77,3 +77,143 @@
 * 模块化：功能模块耦合度低，模块复用度高、逻辑清晰
 * 功能丰富：在实现SM3、SM4主算法的基础上，为了方便不同的散列、加密方式使用，提供了种类丰富的加密方式接口。使用者不需要复杂编码即可实现大部分加密模式。
 
+
+
+<div style="page-break-after:always"></div>
+
+
+
+
+
+## SM3 散列算法工具
+
+
+
+### 概述
+
+&emsp;&emsp;SM3散列算法工具提供基于SM3散列算法的系列加密工具。
+
+
+
+### 功能描述
+
+&emsp;&emsp;支持SM3散列算法的哈希计算。
+
+
+
+### API 参考
+
+&emsp;&emsp;对应的头文件 `sm3.h`
+
+&emsp;&emsp;为用户提供以下接口：
+
+* sm3_digest
+* sm3_stream
+
+
+
+#### sm3_digest
+
+##### 描述
+
+&emsp;&emsp;基于内存数据的 SM3 散列值计算。
+
+##### 函数原型
+
+```c
+void sm3_digest(const uint8_t *data, size_t datalen, uint8_t dgst[SM3_DIGEST_SIZE]);
+```
+
+##### 参数
+
+| 参数名称 | 类型       | 描述                          | 输入输出 |
+| -------- | ---------- | ----------------------------- | -------- |
+| data     | uint8_t*   | 待 SM3 计算的数据指针         | 输入     |
+| datalen  | size_t     | 待 SM3 计算的数据长度（字节） | 输入     |
+| dgst     | uint8_t [] | SM3 散列计算的输出结果        | 输出     |
+
+##### 举例
+
+```c
+uint8_t sm3_res[SM3_DIGEST_SIZE];
+sm3_digest((uint8_t*)"This is a test.", 15, sm3_res);
+```
+
+
+
+#### sm3_stream
+
+##### 描述
+
+&emsp;&emsp;基于缓冲区/文件描述符数据的 SM3 散列值流式计算。
+
+##### 函数原型
+
+```c
+int sm3_stream(uint32_t msglen, uint8_t dgst[SM3_DIGEST_SIZE], FILE *fin);
+```
+
+##### 参数
+
+| 参数名称 | 类型       | 描述                            | 输入输出 |
+| -------- | ---------- | ------------------------------- | -------- |
+| msglen   | uint32_t   | 待 SM3 计算的数据长度（字节）   | 输入     |
+| dgst     | uint8_t [] | SM3 散列计算的输出结果          | 输出     |
+| fin      | FILE*      | 待 SM3 计算的数据来源文件描述符 | 输入     |
+
+##### 举例
+
+```c
+uint8_t sm3_res[SM3_DIGEST_SIZE];
+sm3_stream(100, sm3_res, stdin);
+```
+
+<div style="page-break-after:always"></div>
+
+
+
+
+
+
+
+
+
+## SM4 对称加密算法工具
+
+
+
+### 概述
+
+&emsp;&emsp;SM4对称加密算法工具提供基于SM4对称加密算法的系列加密工具。
+
+
+
+### 功能描述
+
+&emsp;&emsp;支持SM4对称加密算法的多种加密模式的加密计算。
+
+
+
+### API 参考
+
+&emsp;&emsp;对应的头文件 `sm4.h`
+
+&emsp;&emsp;为用户提供以下接口：
+
+* sm4_set_encrypt_key
+* sm4_set_decrypt_key
+* sm4_cbc_encrypt_init
+* sm4_cbc_encrypt_update
+* sm4_cbc_encrypt_finish
+* sm4_cbc_decrypt_init
+* sm4_cbc_decrypt_update
+* sm4_cbc_decrypt_finish
+* sm4_ctr_encrypt_init
+* sm4_ctr_encrypt_update
+* sm4_ctr_encrypt_finish
+* sm4_ctr_decrypt_init
+* sm4_ctr_decrypt_update
+* sm4_ctr_decrypt_finish
+* sm4_gcm_encrypt
+* sm4_gcm_decrypt
+

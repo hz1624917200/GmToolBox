@@ -79,6 +79,7 @@ void sm3_update(SM3_CTX *ctx, const uint8_t *data, size_t datalen);
 void sm3_finish(SM3_CTX *ctx, uint8_t dgst[SM3_DIGEST_SIZE]);
 void sm3_digest(const uint8_t *data, size_t datalen, uint8_t dgst[SM3_DIGEST_SIZE]);
 
+// stream hash
 int sm3_stream(uint32_t msglen, uint8_t dgst[SM3_DIGEST_SIZE], FILE *fin);
 
 typedef struct {
@@ -86,12 +87,12 @@ typedef struct {
 	unsigned char key[SM3_BLOCK_SIZE];
 } SM3_HMAC_CTX;
 
-void sm3_hmac_init(SM3_HMAC_CTX *ctx, const uint8_t *key, size_t keylen);
-void sm3_hmac_update(SM3_HMAC_CTX *ctx, const uint8_t *data, size_t datalen);
-void sm3_hmac_finish(SM3_HMAC_CTX *ctx, uint8_t mac[SM3_HMAC_SIZE]);
-void sm3_hmac(const uint8_t *key, size_t keylen,
-	const uint8_t *data, size_t datalen,
-	uint8_t mac[SM3_HMAC_SIZE]);
+// void sm3_hmac_init(SM3_HMAC_CTX *ctx, const uint8_t *key, size_t keylen);
+// void sm3_hmac_update(SM3_HMAC_CTX *ctx, const uint8_t *data, size_t datalen);
+// void sm3_hmac_finish(SM3_HMAC_CTX *ctx, uint8_t mac[SM3_HMAC_SIZE]);
+// void sm3_hmac(const uint8_t *key, size_t keylen,
+// 	const uint8_t *data, size_t datalen,
+// 	uint8_t mac[SM3_HMAC_SIZE]);
 
 
 #ifdef __cplusplus

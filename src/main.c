@@ -14,12 +14,12 @@
 SemaphoreHandle_t semAvailable, semEmpty;
 uint8_t *Encrypted_data;
 // Encryption and Verify
-SM4_KEY myKey;
+uint8_t myKey[16] = "This is my key\r\n";
 
 void TaskDataEncrypt()
 {
     uint8_t iv[16];
-    size_t encrypt_len;
+    size_t encrypt_len, encrypt_len_finish;
     while (1)
     {
         xSemaphoreTake(semAvailable, portMAX_DELAY);
@@ -36,7 +36,12 @@ void TaskDataEncrypt()
         // putchar('\n');
 
         // do encryption
-        sm4_cbc_padding_encrypt(&myKey, iv, (uint8_t *)lcd_gram0, GRAM_SIZE, Encrypted_data, &encrypt_len);
+        SM4_CBC_CTX myctx;
+        sm4_cbc_encrypt_init(&myctx, myKey, iv);
+        sm4_cbc_encrypt_update(&myctx, (uint8_t *)lcd_gram0, GRAM_SIZE, Encrypted_data, &encrypt_len);
+        sm4_cbc_encrypt_finish(&myctx, Encrypted_data + encrypt_len, &encrypt_len_finish);
+        encrypt_len += encrypt_len_finish;  // sum up the enc len
+        // sm4_cbc_padding_encrypt(&myKey, iv, (uint8_t *)lcd_gram0, GRAM_SIZE, Encrypted_data, &encrypt_len);
 
         printf("encrypt_len: %lu\n", encrypt_len);
         // for (int i = 0; i < 32; i++)
