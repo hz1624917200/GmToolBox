@@ -31,10 +31,10 @@ src
 
 样例成果展示如图：
 
-![Demo1](..\doc\pic\Demo1.jpg)
+![Demo1](../doc/pic/Demo1.jpg)
 
 **另有样例演示视频：**
 
-<video src="G:\C++\OS-166-GMSSL\Demo1.mp4"></video>
+* [Demo1](../Demo1.mp4)
+* [Demo2](../Demo2.mp4)
 
-<video src="G:\C++\OS-166-GMSSL\Demo2.mp4"></video>
