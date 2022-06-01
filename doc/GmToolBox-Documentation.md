@@ -217,3 +217,489 @@ sm3_stream(100, sm3_res, stdin);
 * sm4_gcm_encrypt
 * sm4_gcm_decrypt
 
+
+
+#### sm4_set_encrypt_key
+
+##### 描述
+
+&emsp;&emsp;将文本形式的加密密钥转换成特定类型的加密密钥。
+
+##### 函数原型
+
+```c
+void sm4_set_encrypt_key(SM4_KEY *key, const uint8_t raw_key[SM4_KEY_SIZE]);
+```
+
+##### 参数
+
+| 参数名称 | 类型      | 描述             | 输入输出 |
+| -------- | --------- | ---------------- | -------- |
+| key      | SM4_KEY*  | 转换后的加密密钥 | 输出     |
+| raw_key  | uint8_t[] | 未转换的加密密钥 | 输入     |
+
+##### 举例
+
+```c
+sm4_set_encrypt_key(&myKey, "This is test key");
+```
+
+
+
+#### sm4_set_decrypt_key
+
+##### 描述
+
+&emsp;&emsp;将文本形式的加密密钥转换成特定类型的加密密钥。
+
+##### 函数原型
+
+```c
+void sm4_set_decrypt_key(SM4_KEY *key, const uint8_t raw_key[SM4_KEY_SIZE]);
+```
+
+##### 参数
+
+| 参数名称 | 类型      | 描述             | 输入输出 |
+| -------- | --------- | ---------------- | -------- |
+| key      | SM4_KEY*  | 转换后的解密密钥 | 输出     |
+| raw_key  | uint8_t[] | 未转换的解密密钥 | 输入     |
+
+##### 举例
+
+```c
+sm4_set_decrypt_key(&myKey, "This is test key");
+```
+
+
+
+#### sm4_cbc_encrypt_init
+
+##### 描述
+
+&emsp;&emsp;CBC模式加密的初始化。
+
+##### 函数原型
+
+```c
+int sm4_cbc_encrypt_init(SM4_CBC_CTX *ctx, const uint8_t key[SM4_KEY_SIZE], const uint8_t iv[SM4_BLOCK_SIZE]);
+```
+
+##### 参数
+
+| 参数名称 | 类型         | 描述     | 输入输出 |
+| -------- | ------------ | -------- | -------- |
+| ctx      | SM4_CBC_CTX* | context  | 输出     |
+| key      | uint8_t []   | 加密密钥 | 输入     |
+| iv       | uint8_t []   | 初始向量 | 输入     |
+
+##### 举例
+
+```c
+uint8_t iv[SM4_BLOCK_SIZE];
+sm4_cbc_encrypt_init(&ctx, "This is test key",iv);
+```
+
+
+
+#### sm4_cbc_encrypt_update
+
+##### 描述
+
+&emsp;&emsp;输出完整的块的CBC模式加密结果
+
+##### 函数原型
+
+```c
+int sm4_cbc_encrypt_update(SM4_CBC_CTX *ctx, const uint8_t *in, size_t inlen, uint8_t *out, size_t *outlen);
+```
+
+##### 参数
+
+| 参数名称 | 类型         | 描述       | 输入输出 |
+| -------- | ------------ | ---------- | -------- |
+| ctx      | SM4_CBC_CTX* | context    | 输入     |
+| in       | uint8_t *    | 待加密明文 | 输入     |
+| inlen    | size_t       | 输入长度   | 输入     |
+| out      | uint8_t *    | 加密结果   | 输出     |
+| outlen   | size_t*      | 结果长度   | 输出     |
+
+##### 举例
+
+```c
+uint8_t iv[SM4_BLOCK_SIZE];
+sm4_cbc_encrypt_update(&ctx, "This is test key",iv);
+```
+
+
+
+#### sm4_cbc_encrypt_finish
+
+##### 描述
+
+&emsp;&emsp;输出需要填充的块的CBC模式加密结果
+
+##### 函数原型
+
+```c
+int sm4_cbc_encrypt_finish(SM4_CBC_CTX *ctx, uint8_t *out, size_t *outlen);
+```
+
+##### 参数
+
+| 参数名称 | 类型         | 描述     | 输入输出 |
+| -------- | ------------ | -------- | -------- |
+| ctx      | SM4_CBC_CTX* | context  | 输入     |
+| out      | uint8_t *    | 加密结果 | 输出     |
+| outlen   | size_t*      | 结果长度 | 输出     |
+
+##### 举例
+
+```c
+uint8_t iv[SM4_BLOCK_SIZE];
+int sm4_cbc_encrypt_init(&ctx, "This is test key",iv);
+```
+
+
+
+#### sm4_cbc_decrypt_init
+
+##### 描述
+
+&emsp;&emsp;CBC模式解密的初始化。
+
+##### 函数原型
+
+```c
+int sm4_cbc_decrypt_init(SM4_CBC_CTX *ctx, const uint8_t key[SM4_KEY_SIZE], const uint8_t iv[SM4_BLOCK_SIZE]);
+```
+
+##### 参数
+
+| 参数名称 | 类型         | 描述     | 输入输出 |
+| -------- | ------------ | -------- | -------- |
+| ctx      | SM4_CBC_CTX* | context  | 输出     |
+| key      | uint8_t []   | 加密密钥 | 输入     |
+| iv       | uint8_t []   | 初始向量 | 输入     |
+
+##### 举例
+
+```c
+uint8_t iv[SM4_BLOCK_SIZE];
+sm4_cbc_decrypt_init(&ctx, "This is test key",iv);
+```
+
+
+
+#### sm4_cbc_decrypt_update
+
+##### 描述
+
+&emsp;&emsp;输出完整的块的CBC模式解密结果
+
+##### 函数原型
+
+```c
+int sm4_cbc_decrypt_update(SM4_CBC_CTX *ctx, const uint8_t *in, size_t inlen, uint8_t *out, size_t *outlen);
+```
+
+##### 参数
+
+| 参数名称 | 类型         | 描述       | 输入输出 |
+| -------- | ------------ | ---------- | -------- |
+| ctx      | SM4_CBC_CTX* | context    | 输入     |
+| in       | uint8_t *    | 待解密密文 | 输入     |
+| inlen    | size_t       | 输入长度   | 输入     |
+| out      | uint8_t *    | 解密结果   | 输出     |
+| outlen   | size_t*      | 结果长度   | 输出     |
+
+##### 举例
+
+```c
+uint8_t iv[SM4_BLOCK_SIZE];
+sm4_cbc_encrypt_init(&ctx, "This is test key",iv);
+```
+
+
+
+#### sm4_cbc_decrypt_finish
+
+##### 描述
+
+&emsp;&emsp;输出需要填充的块的CBC模式解密结果
+
+##### 函数原型
+
+```c
+int sm4_cbc_decrypt_finish(SM4_CBC_CTX *ctx, uint8_t *out, size_t *outlen);
+```
+
+##### 参数
+
+| 参数名称 | 类型         | 描述     | 输入输出 |
+| -------- | ------------ | -------- | -------- |
+| ctx      | SM4_CBC_CTX* | context  | 输入     |
+| out      | uint8_t *    | 解密结果 | 输出     |
+| outlen   | size_t*      | 结果长度 | 输出     |
+
+##### 举例
+
+```c
+uint8_t iv[SM4_BLOCK_SIZE];
+int sm4_cbc_encrypt_init(&ctx, "This is test key",iv);
+```
+
+
+
+#### sm4_ctr_encrypt_init
+
+##### 描述
+
+&emsp;&emsp;CTR模式加密的初始化。
+
+##### 函数原型
+
+```c
+int sm4_ctr_encrypt_init(SM4_CTR_CTX *ctx, const uint8_t key[SM4_KEY_SIZE], const uint8_t ctr[SM4_BLOCK_SIZE]);
+```
+
+##### 参数
+
+| 参数名称 | 类型         | 描述     | 输入输出 |
+| -------- | ------------ | -------- | -------- |
+| ctx      | SM4_CTR_CTX* | context  | 输出     |
+| key      | uint8_t []   | 加密密钥 | 输入     |
+| ctr      | uint8_t []   | 计数器   | 输入     |
+
+##### 举例
+
+```c
+uint8_t iv[SM4_BLOCK_SIZE];
+sm4_cbc_encrypt_init(&ctx, "This is test key",iv);
+```
+
+
+
+#### sm4_ctr_encrypt_update
+
+##### 描述
+
+&emsp;&emsp;输出完整的块的CTR模式加密结果
+
+##### 函数原型
+
+```c
+int sm4_ctr_encrypt_update(SM4_CTR_CTX *ctx, const uint8_t *in, size_t inlen, uint8_t *out, size_t *outlen);
+```
+
+##### 参数
+
+| 参数名称 | 类型         | 描述       | 输入输出 |
+| -------- | ------------ | ---------- | -------- |
+| ctx      | SM4_CTR_CTX* | context    | 输入     |
+| in       | uint8_t *    | 待加密明文 | 输入     |
+| inlen    | size_t       | 输入长度   | 输入     |
+| out      | uint8_t *    | 加密结果   | 输出     |
+| outlen   | size_t*      | 结果长度   | 输出     |
+
+##### 举例
+
+```c
+uint8_t iv[SM4_BLOCK_SIZE];
+sm4_cbc_encrypt_update(&ctx, "This is test key",iv);
+```
+
+
+
+#### sm4_ctr_encrypt_finish
+
+##### 描述
+
+&emsp;&emsp;输出需要填充的块的CTR模式加密结果
+
+##### 函数原型
+
+```c
+int sm4_ctr_encrypt_finish(SM4_CTR_CTX *ctx, uint8_t *out, size_t *outlen);
+```
+
+##### 参数
+
+| 参数名称 | 类型         | 描述     | 输入输出 |
+| -------- | ------------ | -------- | -------- |
+| ctx      | SM4_CTR_CTX* | context  | 输入     |
+| out      | uint8_t *    | 加密结果 | 输出     |
+| outlen   | size_t*      | 结果长度 | 输出     |
+
+##### 举例
+
+```c
+uint8_t iv[SM4_BLOCK_SIZE];
+int sm4_cbc_encrypt_init(&ctx, "This is test key",iv);
+```
+
+
+
+#### sm4_ctr_decrypt_init
+
+##### 描述
+
+&emsp;&emsp;CTR模式解密的初始化。
+
+##### 函数原型
+
+```c
+int sm4_ctr_decrypt_init(SM4_CTR_CTX *ctx, const uint8_t key[SM4_KEY_SIZE], const uint8_t ctr[SM4_BLOCK_SIZE]);
+```
+
+##### 参数
+
+| 参数名称 | 类型         | 描述     | 输入输出 |
+| -------- | ------------ | -------- | -------- |
+| ctx      | SM4_CTR_CTX* | context  | 输出     |
+| key      | uint8_t []   | 加密密钥 | 输入     |
+| ctr      | uint8_t []   | 计数器   | 输入     |
+
+##### 举例
+
+```c
+uint8_t iv[SM4_BLOCK_SIZE];
+sm4_cbc_encrypt_init(&ctx, "This is test key",iv);
+```
+
+
+
+#### sm4_ctr_decrypt_update
+
+##### 描述
+
+&emsp;&emsp;输出完整的块的CTR模式解密结果
+
+##### 函数原型
+
+```c
+int sm4_ctr_decrypt_update(SM4_CTR_CTX *ctx, const uint8_t *in, size_t inlen, uint8_t *out, size_t *outlen);
+```
+
+##### 参数
+
+| 参数名称 | 类型         | 描述       | 输入输出 |
+| -------- | ------------ | ---------- | -------- |
+| ctx      | SM4_CTR_CTX* | context    | 输入     |
+| in       | uint8_t *    | 待加密明文 | 输入     |
+| inlen    | size_t       | 输入长度   | 输入     |
+| out      | uint8_t *    | 加密结果   | 输出     |
+| outlen   | size_t*      | 结果长度   | 输出     |
+
+##### 举例
+
+```c
+uint8_t iv[SM4_BLOCK_SIZE];
+sm4_cbc_encrypt_update(&ctx, "This is test key",iv);
+```
+
+
+
+#### sm4_ctr_decrypt_finish
+
+##### 描述
+
+&emsp;&emsp;输出需要填充的块的CTR模式解密结果
+
+##### 函数原型
+
+```c
+int sm4_ctr_decrypt_finish(SM4_CTR_CTX *ctx, uint8_t *out, size_t *outlen);
+```
+
+##### 参数
+
+| 参数名称 | 类型         | 描述     | 输入输出 |
+| -------- | ------------ | -------- | -------- |
+| ctx      | SM4_CTR_CTX* | context  | 输入     |
+| out      | uint8_t *    | 加密结果 | 输出     |
+| outlen   | size_t*      | 结果长度 | 输出     |
+
+##### 举例
+
+```c
+uint8_t iv[SM4_BLOCK_SIZE];
+int sm4_cbc_encrypt_init(&ctx, "This is test key",iv);
+```
+
+
+
+#### sm4_gcm_encrypt
+
+##### 描述
+
+&emsp;&emsp;GCM模式加密
+
+##### 函数原型
+
+```c
+int sm4_gcm_encrypt(const SM4_KEY *key, const uint8_t *iv, size_t ivlen,
+	const uint8_t *aad, size_t aadlen, const uint8_t *in, size_t inlen,
+	uint8_t *out, size_t taglen, uint8_t *tag);
+```
+
+##### 参数
+
+| 参数名称 | 类型      | 描述             | 输入输出 |
+| -------- | --------- | ---------------- | -------- |
+| key      | SM4_KEY*  | 加密密钥         | 输入     |
+| iv       | uint8_t * | 初始向量         | 输入     |
+| inlen    | size_t    | 初始向量长度     | 输入     |
+| aad      | uint8_t * | 附加认证数据     | 输入     |
+| aadlen   | size_t    | 附加认证数据长度 | 输入     |
+| in       | uint8_t * | 待加密明文       | 输入     |
+| inlen    | size_t    | 输入长度         | 输入     |
+| out      | uint8_t * | 加密结果         | 输出     |
+| taglen   | size_t    | mac长度          | 输出     |
+| tag      | uint8_t * | mac              | 输出     |
+
+##### 举例
+
+```c
+uint8_t iv[SM4_BLOCK_SIZE];
+int sm4_cbc_encrypt_init(&ctx, "This is test key",iv);
+```
+
+
+
+#### sm4_gcm_decrypt
+
+##### 描述
+
+&emsp;&emsp;GCM模式解密
+
+##### 函数原型
+
+```c
+int sm4_gcm_decrypt(const SM4_KEY *key, const uint8_t *iv, size_t ivlen,
+	const uint8_t *aad, size_t aadlen, const uint8_t *in, size_t inlen,
+	const uint8_t *tag, size_t taglen, uint8_t *out);
+```
+
+##### 参数
+
+| 参数名称 | 类型      | 描述             | 输入输出 |
+| -------- | --------- | ---------------- | -------- |
+| key      | SM4_KEY*  | 解密密钥         | 输入     |
+| iv       | uint8_t * | 初始向量         | 输入     |
+| inlen    | size_t    | 初始向量长度     | 输入     |
+| aad      | uint8_t * | 附加认证数据     | 输入     |
+| aadlen   | size_t    | 附加认证数据长度 | 输入     |
+| in       | uint8_t * | 待解密密文       | 输入     |
+| inlen    | size_t    | 输入长度         | 输入     |
+| tag      | uint8_t * | mac              | 输出     |
+| taglen   | size_t    | mac长度          | 输出     |
+| out      | uint8_t * | 解密结果         | 输出     |
+
+##### 举例
+
+```c
+uint8_t iv[SM4_BLOCK_SIZE];
+int sm4_cbc_encrypt_init(&ctx, "This is test key",iv);
+```
+
