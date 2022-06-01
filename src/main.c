@@ -64,6 +64,7 @@ void TaskDataEncrypt()
     vTaskDelete(NULL);
 }
 
+// test Data Generator. When released, data is from Camera
 void TaskGenerator()
 {
     while (1)
