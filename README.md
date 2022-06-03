@@ -43,9 +43,10 @@
 
 ![Demo](./doc/pic/Demo1.jpg)
 
-<video src="./Demo1.mp4"></video>
+**另有样例演示视频：**
 
-<video src="./Demo2.mp4"></video>
+* [Demo1](./Demo1.mp4)
+* [Demo2](./Demo2.mp4)
 
 具体内容详见[成果](./成果.md)
 
