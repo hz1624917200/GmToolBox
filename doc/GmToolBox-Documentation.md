@@ -324,13 +324,6 @@ int sm4_cbc_encrypt_update(SM4_CBC_CTX *ctx, const uint8_t *in, size_t inlen, ui
 | out      | uint8_t *    | 加密结果   | 输出     |
 | outlen   | size_t*      | 结果长度   | 输出     |
 
-##### 举例
-
-```c
-uint8_t iv[SM4_BLOCK_SIZE];
-sm4_cbc_encrypt_update(&ctx, "This is test key",iv);
-```
-
 
 
 #### sm4_cbc_encrypt_finish
@@ -352,13 +345,6 @@ int sm4_cbc_encrypt_finish(SM4_CBC_CTX *ctx, uint8_t *out, size_t *outlen);
 | ctx      | SM4_CBC_CTX* | context  | 输入     |
 | out      | uint8_t *    | 加密结果 | 输出     |
 | outlen   | size_t*      | 结果长度 | 输出     |
-
-##### 举例
-
-```c
-uint8_t iv[SM4_BLOCK_SIZE];
-int sm4_cbc_encrypt_init(&ctx, "This is test key",iv);
-```
 
 
 
@@ -382,12 +368,7 @@ int sm4_cbc_decrypt_init(SM4_CBC_CTX *ctx, const uint8_t key[SM4_KEY_SIZE], cons
 | key      | uint8_t []   | 加密密钥 | 输入     |
 | iv       | uint8_t []   | 初始向量 | 输入     |
 
-##### 举例
 
-```c
-uint8_t iv[SM4_BLOCK_SIZE];
-sm4_cbc_decrypt_init(&ctx, "This is test key",iv);
-```
 
 
 
@@ -413,13 +394,6 @@ int sm4_cbc_decrypt_update(SM4_CBC_CTX *ctx, const uint8_t *in, size_t inlen, ui
 | out      | uint8_t *    | 解密结果   | 输出     |
 | outlen   | size_t*      | 结果长度   | 输出     |
 
-##### 举例
-
-```c
-uint8_t iv[SM4_BLOCK_SIZE];
-sm4_cbc_encrypt_init(&ctx, "This is test key",iv);
-```
-
 
 
 #### sm4_cbc_decrypt_finish
@@ -442,13 +416,6 @@ int sm4_cbc_decrypt_finish(SM4_CBC_CTX *ctx, uint8_t *out, size_t *outlen);
 | out      | uint8_t *    | 解密结果 | 输出     |
 | outlen   | size_t*      | 结果长度 | 输出     |
 
-##### 举例
-
-```c
-uint8_t iv[SM4_BLOCK_SIZE];
-int sm4_cbc_encrypt_init(&ctx, "This is test key",iv);
-```
-
 
 
 #### sm4_ctr_encrypt_init
@@ -470,13 +437,6 @@ int sm4_ctr_encrypt_init(SM4_CTR_CTX *ctx, const uint8_t key[SM4_KEY_SIZE], cons
 | ctx      | SM4_CTR_CTX* | context  | 输出     |
 | key      | uint8_t []   | 加密密钥 | 输入     |
 | ctr      | uint8_t []   | 计数器   | 输入     |
-
-##### 举例
-
-```c
-uint8_t iv[SM4_BLOCK_SIZE];
-sm4_cbc_encrypt_init(&ctx, "This is test key",iv);
-```
 
 
 
@@ -502,13 +462,6 @@ int sm4_ctr_encrypt_update(SM4_CTR_CTX *ctx, const uint8_t *in, size_t inlen, ui
 | out      | uint8_t *    | 加密结果   | 输出     |
 | outlen   | size_t*      | 结果长度   | 输出     |
 
-##### 举例
-
-```c
-uint8_t iv[SM4_BLOCK_SIZE];
-sm4_cbc_encrypt_update(&ctx, "This is test key",iv);
-```
-
 
 
 #### sm4_ctr_encrypt_finish
@@ -531,13 +484,6 @@ int sm4_ctr_encrypt_finish(SM4_CTR_CTX *ctx, uint8_t *out, size_t *outlen);
 | out      | uint8_t *    | 加密结果 | 输出     |
 | outlen   | size_t*      | 结果长度 | 输出     |
 
-##### 举例
-
-```c
-uint8_t iv[SM4_BLOCK_SIZE];
-int sm4_cbc_encrypt_init(&ctx, "This is test key",iv);
-```
-
 
 
 #### sm4_ctr_decrypt_init
@@ -559,13 +505,6 @@ int sm4_ctr_decrypt_init(SM4_CTR_CTX *ctx, const uint8_t key[SM4_KEY_SIZE], cons
 | ctx      | SM4_CTR_CTX* | context  | 输出     |
 | key      | uint8_t []   | 加密密钥 | 输入     |
 | ctr      | uint8_t []   | 计数器   | 输入     |
-
-##### 举例
-
-```c
-uint8_t iv[SM4_BLOCK_SIZE];
-sm4_cbc_encrypt_init(&ctx, "This is test key",iv);
-```
 
 
 
@@ -591,13 +530,6 @@ int sm4_ctr_decrypt_update(SM4_CTR_CTX *ctx, const uint8_t *in, size_t inlen, ui
 | out      | uint8_t *    | 加密结果   | 输出     |
 | outlen   | size_t*      | 结果长度   | 输出     |
 
-##### 举例
-
-```c
-uint8_t iv[SM4_BLOCK_SIZE];
-sm4_cbc_encrypt_update(&ctx, "This is test key",iv);
-```
-
 
 
 #### sm4_ctr_decrypt_finish
@@ -619,13 +551,6 @@ int sm4_ctr_decrypt_finish(SM4_CTR_CTX *ctx, uint8_t *out, size_t *outlen);
 | ctx      | SM4_CTR_CTX* | context  | 输入     |
 | out      | uint8_t *    | 加密结果 | 输出     |
 | outlen   | size_t*      | 结果长度 | 输出     |
-
-##### 举例
-
-```c
-uint8_t iv[SM4_BLOCK_SIZE];
-int sm4_cbc_encrypt_init(&ctx, "This is test key",iv);
-```
 
 
 
@@ -658,13 +583,6 @@ int sm4_gcm_encrypt(const SM4_KEY *key, const uint8_t *iv, size_t ivlen,
 | taglen   | size_t    | mac长度          | 输出     |
 | tag      | uint8_t * | mac              | 输出     |
 
-##### 举例
-
-```c
-uint8_t iv[SM4_BLOCK_SIZE];
-int sm4_cbc_encrypt_init(&ctx, "This is test key",iv);
-```
-
 
 
 #### sm4_gcm_decrypt
@@ -695,11 +613,4 @@ int sm4_gcm_decrypt(const SM4_KEY *key, const uint8_t *iv, size_t ivlen,
 | tag      | uint8_t * | mac              | 输出     |
 | taglen   | size_t    | mac长度          | 输出     |
 | out      | uint8_t * | 解密结果         | 输出     |
-
-##### 举例
-
-```c
-uint8_t iv[SM4_BLOCK_SIZE];
-int sm4_cbc_encrypt_init(&ctx, "This is test key",iv);
-```
 
