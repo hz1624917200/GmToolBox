@@ -12,16 +12,20 @@
 ├─firmware
 ├─include
 ├─lib
+│  ├─gmssl
+│  └─lcd-ov5640
 ├─src
 └─test
 ```
 
 * doc：存放绝大部分文档
-  * pic: 文档对应Markdown 文件的图片链接位置
+  * pic: 文档对应 Markdown 文件的图片链接位置
 * firmware：已经完成，可用于测试的第三方固件
 * include：工程自定义头文件
 * lib：工程使用的第三方库
-* src：工程主要代码
+  * gmssl: 我们基于GmSSL项目开发的算法功能库——**GmToolBox**
+  * lcd-ov5640: 应用样例中使用的摄像头、LCD显示屏驱动程序
+* src：应用样例主要代码
 * test：工程单元测试文件
 
 
