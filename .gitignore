@@ -8,3 +8,6 @@ firmware
 *.exe
 
 osCOMP.code-workspace
+GmToolBox*
+Outline.xmind
+.gitignore

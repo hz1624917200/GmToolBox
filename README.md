@@ -1,4 +1,7 @@
+![](./school-badge.png)
+
 # OS-166-GMSSL
+
 > 基于FreeRTOS on RISC-V 的国密算法（SM3, SM4）实现 `GmToolBox`
 >
 > Project ID: 166	 基于RISC-V的FreeRTOS国密算法功能实现
@@ -88,5 +91,4 @@
 ## 工作记录
 
 详见[工作记录](./工作记录.md)
-
 
